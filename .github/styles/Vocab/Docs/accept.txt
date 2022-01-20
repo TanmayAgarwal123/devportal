@@ -9,6 +9,7 @@ Avro
 [Bb]oolean
 [Bb]oot
 [Bb]usiness
+ClickHouse
 [Cc]odecs
 Conduktor
 [Cc]onnect
