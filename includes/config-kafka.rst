@@ -15,6 +15,14 @@
 
 
 
+``service_log``
+---------------
+*['boolean', 'null']*
+
+**Service logging** Store logs for the service so that they are available in the HTTP API and console.
+
+
+
 ``static_ips``
 --------------
 *boolean*
@@ -377,6 +385,30 @@
 
 **producer.purgatory.purge.interval.requests** The purge interval (in number of requests) of the producer request purgatory(defaults to 1000).
 
+``sasl_oauthbearer_expected_audience``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*string*
+
+**sasl.oauthbearer.expected.audience** The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+
+``sasl_oauthbearer_expected_issuer``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*string*
+
+**sasl.oauthbearer.expected.issuer** Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+
+``sasl_oauthbearer_jwks_endpoint_url``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*string*
+
+**sasl.oauthbearer.jwks.endpoint.url** OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. 
+
+``sasl_oauthbearer_sub_claim_name``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*string*
+
+**sasl.oauthbearer.sub.claim.name** Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+
 ``socket_request_max_bytes``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *integer*
@@ -394,6 +426,12 @@
 *integer*
 
 **transaction.remove.expired.transaction.cleanup.interval.ms** The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
+
+``transaction_partition_verification_enable``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*boolean*
+
+**transaction.partition.verification.enable** Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition
 
 
 
@@ -519,7 +557,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *integer*
 
-**The maximum delay of rebalancing connector workers** The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+**The maximum delay of rebalancing connector workers** The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
 
 ``session_timeout_ms``
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -609,6 +647,18 @@
 
 **consumer.request.timeout.ms** The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached
 
+``name_strategy``
+~~~~~~~~~~~~~~~~~
+*string*
+
+**name.strategy** Name strategy to use when selecting subject for storing schemas
+
+``name_strategy_validation``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*boolean*
+
+**name.strategy.validation** If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages.
+
 ``simpleconsumer_pool_size_max``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *integer*
@@ -648,6 +698,14 @@
 *boolean*
 
 **leader_eligibility** If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
+
+
+
+``aiven_kafka_topic_messages``
+------------------------------
+*boolean*
+
+**Allow access to read Kafka topic messages in the Aiven Console and REST API.** 
 
 
 
